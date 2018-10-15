@@ -18,7 +18,7 @@ public class StudentDaoImpl implements StudentDao {
     public boolean addStudent(Student student) {
         Connection connection = connectionManager.getConnection();
         try (PreparedStatement statement = connection.prepareStatement(
-                "INSERT INTO students VALUES (DEFAULT, ?, ?, ?, ?, ?)");
+                "INSERT INTO students VALUES (DEFAULT, ?, ?, ?, ?, ?)")
         ) {
             statement.setString(1, student.getName());
             statement.setString(2, student.getFamilyName());
@@ -38,7 +38,7 @@ public class StudentDaoImpl implements StudentDao {
         Connection connection = connectionManager.getConnection();
         Student student = null;
         try (PreparedStatement statement = connection.prepareStatement(
-                "SELECT * from students WHERE id = ?");
+                "SELECT * from students WHERE id = ?")
         ) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -63,7 +63,7 @@ public class StudentDaoImpl implements StudentDao {
         if (student.getId() != 0) {
             Connection connection = connectionManager.getConnection();
             try (PreparedStatement statement = connection.prepareStatement(
-                    "UPDATE students SET name=?, family_name=?, age=?, contact=?, city=? WHERE id=?");
+                    "UPDATE students SET name=?, family_name=?, age=?, contact=?, city=? WHERE id=?")
             ) {
                 statement.setString(1, student.getName());
                 statement.setString(2, student.getFamilyName());
@@ -87,7 +87,7 @@ public class StudentDaoImpl implements StudentDao {
         Connection connection = connectionManager.getConnection();
         Student student = null;
         try (PreparedStatement statement = connection.prepareStatement(
-                "DELETE FROM students WHERE id=?");
+                "DELETE FROM students WHERE id=?")
         ) {
             statement.setInt(1, id);
             statement.execute();
@@ -103,7 +103,7 @@ public class StudentDaoImpl implements StudentDao {
         {
             Connection connection = connectionManager.getConnection();
             try (PreparedStatement statement = connection.prepareStatement(
-                    "delete from students where name = ?");) {
+                    "delete from students where name = ?")) {
                 statement.setString(1, student.getName());
                 statement.execute();
 

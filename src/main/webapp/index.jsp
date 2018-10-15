@@ -1,19 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Главная страница</title>
 </head>
 <body>
-<H1>Заголовок страницы</H1>
-<p>
-    Абзац текста
-</p>
+
+<H1>Students DB</H1>
+
 <div>
-    <a href="/hello">Hello link</a><BR>
-    <a href="/iterator">Iterator link</a><BR>
-    <a href="/students">Students</a><BR><BR>
-    <form method="post" action="/hello">
-        <input type="text" name="testText">
+    <a href="/students">Get All Students</a><BR><BR>
+
+    <p>
+        Добавить нового студента
+    </p>
+    <form method="get" action="/students">
+        <p><input type="text" name="id"></p>
+        <p><input type="text" name="name"></p>
+        <p><input type="text" name="familyName"></p>
+        <p><input type="text" name="age"></p>
+        <p><input type="text" name="contact"></p>
+        <p><input type="text" name="city"></p>
         <input type="submit">
     </form>
 </div>
