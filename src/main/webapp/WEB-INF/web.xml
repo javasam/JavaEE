@@ -21,6 +21,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>AddStudentToDb</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>innopolis.controllers.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
 

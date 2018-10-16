@@ -1,44 +1,30 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Главная страница</title>
+    <title>Title</title>
 </head>
 <body>
-
-<H1>Students DB</H1>
-
-<div>
-    <a href="/students">Get All Students</a><BR><BR>
-
+<div class="header">
     <p>
-        Добавить нового студента
+        Введите логин и пароль для входа на сайт
     </p>
-    <form method="post" action="/index">
-        <h4>Имя</h4>
-        <input type="text" name="name">
-        <h4>Фамилия</h4>
-        <input type="text" name="familyName">
-        <h4>Возраст</h4>
-        <input type="text" name="age">
-        <h4>Телефон в формате +7 999 123 456</h4>
-        <input type="text" name="contact">
-        <h4>Город</h4>
-        <select name="city">
-            <option value="Moscow">Moscow</option>
-            <option value="Rostov">Rostov</option>
-            <option value="Sankt-Peterburg">Sankt-Peterburg</option>
-            <option value="Samara">Samara</option>
-            <option value="Sochi">Sochi</option>
-        </select>
-        <p><input type="submit"></p>
-    </form>
-    <div>
-            <%
-                if (request.getAttribute("familyName") != null) { %>
-
-                    <%="<p>User: '" + request.getAttribute("familyName") + " " + request.getAttribute("name") + "' added!</p>"%>
-                <%}%>
-        <div>
 </div>
+<%
+    if ("wrongUser".equals(request.getParameter("action"))) {
+%>
+<div style="color:#AA0000">Неверное имя пользователя/пароль</div>
+<%}%>
+<%
+    if ("noAuth".equals(request.getParameter("action"))) {
+%>
+<div style="color:#AA0000">Попытка получить доступ к закрытой части сайта. Сначала надо войти в систему</div>
+<%}%>
+<form action="/index" method="post">
+    Логин:<br>
+    <input type="text" name="login"><BR>
+    Пароль:<BR>
+    <input type="password" name="password"><BR>
+    <input type="submit">
+</form>
 </body>
 </html>
