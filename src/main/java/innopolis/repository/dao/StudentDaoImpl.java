@@ -1,5 +1,6 @@
 package innopolis.repository.dao;
 
+import innopolis.pojo.City;
 import innopolis.pojo.Student;
 import innopolis.repository.connectionManager.ConnectionDb;
 import innopolis.repository.connectionManager.ConnectionDbInterface;
@@ -43,7 +44,7 @@ public class StudentDaoImpl implements StudentDao {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
-                    student = new Student(resultSet.getInt("id"),
+                    student = new Student(
                             resultSet.getString("name"),
                             resultSet.getString("family_name"),
                             resultSet.getInt("age"),
@@ -100,7 +101,6 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public boolean deleteStudentByName(Student student) {
-        {
             Connection connection = connectionManager.getConnection();
             try (PreparedStatement statement = connection.prepareStatement(
                     "delete from students where name = ?")) {
@@ -111,7 +111,6 @@ public class StudentDaoImpl implements StudentDao {
                 e.printStackTrace();
             }
             return true;
-        }
     }
 
     @Override
@@ -124,7 +123,7 @@ public class StudentDaoImpl implements StudentDao {
         ) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
-                    result.add(new Student(resultSet.getInt("id"),
+                    result.add(new Student(
                             resultSet.getString("name"),
                             resultSet.getString("family_name"),
                             resultSet.getInt("age"),
@@ -137,5 +136,25 @@ public class StudentDaoImpl implements StudentDao {
             return null;
         }
         return result;
+    }
+
+    @Override
+    public int getCityIdByName(String name) {
+        Connection connection = connectionManager.getConnection();
+        int id = 0;
+        try (PreparedStatement statement = connection.prepareStatement(
+                "SELECT id from cities WHERE city = ?")
+        ) {
+            statement.setString(1, name);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    id = resultSet.getInt("id");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+        return id;
     }
 }

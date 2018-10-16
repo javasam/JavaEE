@@ -16,5 +16,7 @@ public interface StudentDao {
 
     public boolean deleteStudentByName(Student student);
 
+    public int getCityIdByName(String name);
+
     List<Student> getAllStudents();
 }

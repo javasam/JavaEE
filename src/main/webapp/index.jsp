@@ -13,15 +13,32 @@
     <p>
         Добавить нового студента
     </p>
-    <form method="get" action="/students">
-        <p><input type="text" name="id"></p>
-        <p><input type="text" name="name"></p>
-        <p><input type="text" name="familyName"></p>
-        <p><input type="text" name="age"></p>
-        <p><input type="text" name="contact"></p>
-        <p><input type="text" name="city"></p>
-        <input type="submit">
+    <form method="post" action="/index">
+        <h4>Имя</h4>
+        <input type="text" name="name">
+        <h4>Фамилия</h4>
+        <input type="text" name="familyName">
+        <h4>Возраст</h4>
+        <input type="text" name="age">
+        <h4>Телефон в формате +7 999 123 456</h4>
+        <input type="text" name="contact">
+        <h4>Город</h4>
+        <select name="city">
+            <option value="Moscow">Moscow</option>
+            <option value="Rostov">Rostov</option>
+            <option value="Sankt-Peterburg">Sankt-Peterburg</option>
+            <option value="Samara">Samara</option>
+            <option value="Sochi">Sochi</option>
+        </select>
+        <p><input type="submit"></p>
     </form>
+    <div>
+            <%
+                if (request.getAttribute("familyName") != null) { %>
+
+                    <%="<p>User: '" + request.getAttribute("familyName") + " " + request.getAttribute("name") + "' added!</p>"%>
+                <%}%>
+        <div>
 </div>
 </body>
 </html>
