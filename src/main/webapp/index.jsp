@@ -20,7 +20,7 @@
 <div style="color:#AA0000">Попытка получить доступ к закрытой части сайта. Сначала надо войти в систему</div>
 <%}%>
 <form action="/index" method="post">
-    Логин:<br>
+    Логин:<BR>
     <input type="text" name="login"><BR>
     Пароль:<BR>
     <input type="password" name="password"><BR>
