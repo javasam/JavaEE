@@ -14,5 +14,7 @@
         <%
     }
 %>
+<BR><BR>
+<a href="/dashboard">&lt;&lt;Назад</a>
 </body>
 </html>

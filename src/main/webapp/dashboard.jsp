@@ -8,7 +8,7 @@
 <H1>Students DB</H1>
 
 <div>
-    <a href="/students">Get All Students</a><BR><BR>
+    <a href="/students">Вывести список всех студентов</a><BR><BR>
 
     <p>
         Добавить нового студента

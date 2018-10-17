@@ -21,7 +21,7 @@ public class StudentAddToDbServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/dashboard");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/dashboard.jsp");
         requestDispatcher.forward(req, resp);
     }
 
